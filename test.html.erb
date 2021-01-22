@@ -20,7 +20,7 @@
 
     <% goya = connection.exec("SELECT * FROM crops WHERE give_for != '自家消費';") %>
     <% datatwo = [] %>
-    <% goya.each do |record| %>
+    <% goya.each do |recordtwo| %>
       <%  datatwo << "自家消費ではないもの：#{record["give_for"]}" %>
     <% end %>
     <form action="goya.cgi" method="POST">
