@@ -25,6 +25,7 @@ server = WEBrick::HTTPServer.new({
   Signal.trap(signal){ server.shutdown }
 }
 server.mount('/test', WEBrick::HTTPServlet::ERBHandler, 'test.html.erb')
-# この一行を追記
 server.mount('/indicate.cgi', WEBrick::HTTPServlet::CGIHandler, 'indicate.rb')
+# この一行を追記
+server.mount('/goya.cgi', WEBrick::HTTPServlet::CGIHandler, 'goya.rb')
 server.start
