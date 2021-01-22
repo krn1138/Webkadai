@@ -15,24 +15,24 @@
     <% result = connection.exec("SELECT * FROM crops WHERE quality = false;") %>
     <% data = [] %>
     <% result.each do |record| %>
-      <%  data << "品質が悪いもの：#{record["quality"]}" %>
+      <% data << "品質が悪いもの：#{record["quality"]}" %>
     <% end %>
 
     <% goya = connection.exec("SELECT * FROM crops WHERE give_for != '自家消費';") %>
     <% datatwo = [] %>
     <% goya.each do |recordtwo| %>
-      <%  datatwo << "自家消費ではないもの：#{record["give_for"]}" %>
+      <% datatwo << "自家消費ではないもの：#{recordtwo["give_for"]}" %>
     <% end %>
+
     <form action="goya.cgi" method="POST">
        下記のボタンを押すと、ゴーヤの大きさと売った相手の情報ページに飛びます<br><br>
        <!-- valueには、送りたいデータを代入する -->
        <!-- name="goya"を、情報の目印とする -->
       <input type="text" name="goya" value="<%= data.join(' ') %>">
       <input type="submit" name="送信" >
-
-      <form action="goyare.cgi" method="POST">
-        <!-- 下記のボタンを押すと、ゴーヤの大きさと売った相手の情報ページに飛びます<br><br> -->
-      <input type="text" name="goyatwo" value="<%= datatwo.join(' ') %>">
+    </form>
+    <form action="goyare.cgi" method="POST">
+      <input type="text" name="goyare" value="<%= datatwo.join(' ') %>">
       <input type="submit" name="送信" >
 
     </form>
